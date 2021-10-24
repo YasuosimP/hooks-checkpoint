@@ -1,5 +1,6 @@
 import React from 'react'
 import StarRatingComponent from 'react-star-rating-component';
+import { Link } from 'react-router-dom';
 
 const MovieCard = ({movie}) => {
     return (
@@ -21,6 +22,9 @@ const MovieCard = ({movie}) => {
         <div class="movie_desc">
           <p class="text">
            {movie.description}
+           <Link to={`/description/${movie.id}`}>
+           <button>Movie description</button>
+           </Link>
           </p>
         </div>
       </div>

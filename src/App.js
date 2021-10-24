@@ -4,6 +4,8 @@ import MoviesList from './MoviesListe'
 import {v4 as uuidv4} from 'uuid'
 import { useState } from 'react';
 import Search from './Search';
+import {BrowserRouter as Router ,Route   } from 'react-router-dom';
+import Desc from './desc';
 
 
 function App() {
@@ -43,11 +45,15 @@ function App() {
     setMovies(movies.concat(movie))
   }
   return (
+    
     <div className="App">
+    <Router>
       <Search search={search} setRate={setRate} newRate={newRate}/>
       <MoviesList addMovie={addMovie} movies={movies.filter(el=> el.rate >= newRate&& el.title.toLowerCase().includes(keyword.toLowerCase().trim()))}/>
-    
+      <Route path="/description/id" render={(props)=><Desc {...props}movies={movies}/>}/>
+      </Router>
     </div>
+    
   );
 }
 
